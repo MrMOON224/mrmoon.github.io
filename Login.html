@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title></title>
+        <meta name="google-signin-client_id" content="811526700040-k2tasrkp1931hdeei46p7rihngatk939.apps.googleusercontent.com">
+    </head>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="text/javascript" charset="utf-8">
+        function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+// auth2 is initialized with gapi.auth2.init() and a user is signed in.
+
+if (auth2.isSignedIn.get()) {
+  var profile = auth2.currentUser.get().getBasicProfile();
+  console.log('ID: ' + profile.getId());
+  console.log('Full Name: ' + profile.getName());
+  console.log('Given Name: ' + profile.getGivenName());
+  console.log('Family Name: ' + profile.getFamilyName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail());
+}
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+    </script>
+    <style type="text/css" media="all">
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+    
+    body {
+        background: #182438;
+    }
+        h1 {
+            text-align: center;
+            color: white;
+            font-family: Oswald;
+        }
+        .c {
+            border-bottom: 1px soilt white;
+            text-decoration: none;
+            color: white;
+            font-family: Oswald;
+        }
+        .c:hover {
+            background-color: black;
+            padding: 5px 5px;
+            border-radius: 5px;
+            text-shadow: 0px 0px 5px white;
+        }
+    </style>
+    <body>
+        <br /><br />
+        <h1>welcome to login</h1>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <br /><br /><br />
+        <a class="c" href="index.html" onclick="signOut();">Sign out</a>
+    </body>
+</html>
